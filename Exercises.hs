@@ -18,8 +18,9 @@ instance Fluffy Maybe where
 
 -- Exercise 3
 -- Relative Difficulty: 5
+-- furry :: (a -> b) -> (t -> a) -> (t ->  b)
 instance Fluffy ((->) t) where
-  furry = error "todo"
+  furry = (.)
 
 newtype EitherLeft b a = EitherLeft (Either a b)
 newtype EitherRight a b = EitherRight (Either a b)
