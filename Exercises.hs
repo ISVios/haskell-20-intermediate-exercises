@@ -39,7 +39,7 @@ instance Fluffy (EitherRight t) where
 
 -- show Additional Misty functions
 class Misty m where -- is Monada
-  banana :: (a -> m b) -> m a -> m b -- is bind   >>=
+  banana :: (a -> m b) -> m a -> m b -- is flip bind   =<<
   unicorn :: a -> m a                -- is return 
 
 -- Exercise 6
@@ -52,8 +52,8 @@ furry' f {-ma-} = banana (unicorn . f) {-ma-}
 -- Exercise 7
 -- Relative Difficulty: 2
 instance Misty [] where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana k ma   = concat $ map k ma 
+  unicorn {-x-} = (:[]) {-x-}
 
 -- Exercise 8
 -- Relative Difficulty: 2
