@@ -87,7 +87,7 @@ instance Misty (EitherRight t) where
 -- Exercise 12
 -- Relative Difficulty: 3
 jellybean :: (Misty m) => m (m a) -> m a
-jellybean = error "todo"
+jellybean = banana id
 
 -- Exercise 13
 -- Relative Difficulty: 6
