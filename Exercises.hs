@@ -64,9 +64,9 @@ instance Misty Maybe where
 
 -- Exercise 9
 -- Relative Difficulty: 6
-instance Misty ((->) t) where
-  banana = error "todo"
-  unicorn = error "todo"
+instance Misty ((->) t) where -- reader
+  banana k ma = \e -> let a = ma e in (k a) e
+  unicorn x   = \_ -> x
 
 -- Exercise 10
 -- Relative Difficulty: 6
