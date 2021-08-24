@@ -71,8 +71,10 @@ instance Misty ((->) t) where -- reader
 -- Exercise 10
 -- Relative Difficulty: 6
 instance Misty (EitherLeft t) where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana k     (EitherLeft (Left a))  = k a
+  banana k     (EitherLeft (Right a)) = EitherLeft . Right $ a
+  unicorn {-x-} = EitherLeft . Left {-x-}
+
 
 -- Exercise 11
 -- Relative Difficulty: 6
