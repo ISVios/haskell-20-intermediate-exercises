@@ -28,13 +28,19 @@ newtype EitherRight a b = EitherRight (Either a b)
 -- Exercise 4
 -- Relative Difficulty: 5
 instance Fluffy (EitherLeft t) where
-  furry = error "todo"
+  furry f (EitherLeft (Left a)) = EitherLeft . Left . f $ a
+  furry f (EitherLeft (Right a)) = EitherLeft . Right $ a
 
 -- Exercise 5
 -- Relative Difficulty: 5
 instance Fluffy (EitherRight t) where
-  furry = error "todo"
+  furry f (EitherRight (Left a)) = EitherRight . Left  $ a
+  furry f (EitherRight (Right a)) = EitherRight . Right . f $ a
 
+-- show Additional Misty functions
+class Misty m where
+  banana :: (a -> m b) -> m a -> m b
+  unicorn :: a -> m a
 
 -- Exercise 6
 -- Relative Difficulty: 3
@@ -72,11 +78,6 @@ instance Misty (EitherLeft t) where
 instance Misty (EitherRight t) where
   banana = error "todo"
   unicorn = error "todo"
-
--- show Additional Misty functions
-class Misty m where
-  banana :: (a -> m b) -> m a -> m b
-  unicorn :: a -> m a
 
 
 -- Exercise 12
