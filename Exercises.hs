@@ -1,12 +1,14 @@
 module Exercises where
 -- show Fluffy instances
 class Fluffy f where
-  furry :: (a -> b) -> f a -> f b
+  furry :: (a -> b) -> f a -> f b -- is fmap
 
 -- Exercise 1
 -- Relative Difficulty: 1
 instance Fluffy [] where
-  furry = error "todo"
+  --furry = map 
+  furry _ []     = []
+  furry f (x:xs) = f x : furry f xs
 
 -- Exercise 2
 -- Relative Difficulty: 1
