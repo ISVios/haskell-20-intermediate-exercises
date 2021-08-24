@@ -38,15 +38,15 @@ instance Fluffy (EitherRight t) where
   furry f (EitherRight (Right a)) = EitherRight . Right . f $ a
 
 -- show Additional Misty functions
-class Misty m where
-  banana :: (a -> m b) -> m a -> m b
-  unicorn :: a -> m a
+class Misty m where -- is Monada
+  banana :: (a -> m b) -> m a -> m b -- is bind   >>=
+  unicorn :: a -> m a                -- is return 
 
 -- Exercise 6
 -- Relative Difficulty: 3
 -- (use banana and/or unicorn)
 furry' :: (Misty m) => (a -> b) -> m a -> m b
-furry' = error "todo"
+furry' f {-ma-} = banana (unicorn . f) {-ma-}
 
 
 -- Exercise 7
