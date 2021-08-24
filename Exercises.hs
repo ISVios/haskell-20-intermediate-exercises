@@ -79,8 +79,9 @@ instance Misty (EitherLeft t) where
 -- Exercise 11
 -- Relative Difficulty: 6
 instance Misty (EitherRight t) where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana k (EitherRight (Right a)) = k a
+  banana k (EitherRight (Left a)) = EitherRight . Left $ a
+  unicorn {-x-} = EitherRight . Right {-x-}
 
 
 -- Exercise 12
