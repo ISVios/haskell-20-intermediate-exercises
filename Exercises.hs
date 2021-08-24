@@ -91,8 +91,8 @@ jellybean = banana id
 
 -- Exercise 13
 -- Relative Difficulty: 6
-apple :: (Misty m) => m a -> m (a -> b) -> m b
-apple = error "todo"
+apple :: (Misty m) => m a -> m (a -> b) -> m b -- filp <*> Applicative
+apple ma mf = banana (\f ->  banana (\a -> unicorn $ f a) ma ) mf   
 
 -- Exercise 14
 -- Relative Difficulty: 6
