@@ -58,8 +58,9 @@ instance Misty [] where
 -- Exercise 8
 -- Relative Difficulty: 2
 instance Misty Maybe where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana k (Just x) = k x
+  banana _ Nothing  = Nothing 
+  unicorn {-x-}= Just {-x-}
 
 -- Exercise 9
 -- Relative Difficulty: 6
