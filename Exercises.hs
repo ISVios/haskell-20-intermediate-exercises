@@ -96,32 +96,34 @@ apple ma mf = banana (\f ->  banana (\a -> unicorn $ f a) ma ) mf
 
 -- Exercise 14
 -- Relative Difficulty: 6
-moppy :: (Misty m) => [a] -> (a -> m b) -> m [b]
-moppy = error "todo"
+--moppy :: (Misty m) => [a] -> (a -> m b) -> m [b]
+moppy [x]    k = banana (\n -> unicorn $ [n]) (k x)
+moppy (x:xs) k = apple (moppy xs k) (banana (\n -> unicorn $ (:) $ n) (k x)) 
 
 -- Exercise 15
 -- Relative Difficulty: 6
 -- (bonus: use moppy)
-sausage :: (Misty m) => [m a] -> m [a]
-sausage = error "todo"
+--sausage :: (Misty m) => [m a] -> m [a]
+--sausage = flip moppy id
 
 -- Exercise 16
 -- Relative Difficulty: 6
 -- (bonus: use apple + furry')
 banana2 :: (Misty m) => (a -> b -> c) -> m a -> m b -> m c
-banana2 = error "todo"
+banana2 f ma mb = apple mb (furry' (\a ->  f a ) ma) 
+
 
 -- Exercise 17
 -- Relative Difficulty: 6
 -- (bonus: use apple + banana2)
 banana3 :: (Misty m) => (a -> b -> c -> d) -> m a -> m b -> m c -> m d
-banana3 = error "todo"
+banana3 f ma mb mc = apple mc $ banana2 f  ma mb  
 
 -- Exercise 18
 -- Relative Difficulty: 6
 -- (bonus: use apple + banana3)
 banana4 :: (Misty m) => (a -> b -> c -> d -> e) -> m a -> m b -> m c -> m d -> m e
-banana4 = error "todo"
+banana4 f ma mb mc md = apple md $ banana3 f ma mb mc
 
 data State s a = State {
   state :: (s -> (s, a))
@@ -131,10 +133,10 @@ data State s a = State {
 -- Relative Difficulty: 9
 instance Fluffy (State s) where
   furry = error "todo"
-
+{-
 -- Exercise 20
 -- Relative Difficulty: 10
 instance Misty (State s) where
   banana = error "todo"
   unicorn = error "todo"
-
+-}
