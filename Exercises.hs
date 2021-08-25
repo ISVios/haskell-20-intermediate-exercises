@@ -134,10 +134,9 @@ data State s a = State {
 -- 
 instance Fluffy (State s) where
   furry f ma = State $ \s -> let (s', a) = state ma s in (s', f a)
-{-
 -- Exercise 20
 -- Relative Difficulty: 10
 instance Misty (State s) where
-  banana = error "todo"
-  unicorn = error "todo"
--}
+  banana k ma = State $ \s -> let (s',a)   = state ma s 
+                              in state (k a) s'   
+  unicorn x = State $ \s -> (s, x)  
