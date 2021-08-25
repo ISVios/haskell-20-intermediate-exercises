@@ -131,8 +131,9 @@ data State s a = State {
 
 -- Exercise 19
 -- Relative Difficulty: 9
+-- 
 instance Fluffy (State s) where
-  furry = error "todo"
+  furry f ma = State $ \s -> let (s', a) = state ma s in (s', f a)
 {-
 -- Exercise 20
 -- Relative Difficulty: 10
